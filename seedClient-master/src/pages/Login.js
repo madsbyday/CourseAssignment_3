@@ -41,8 +41,8 @@ class Login extends Component {
           <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
           <br />
         </form>
-        { this.state.err && ( 
-          <div className="alert alert-danger errmsg"  role="alert"> 
+        { this.state.err && (
+          <div className="alert alert-danger errmsg"  role="alert">
             {this.state.err}
           </div>
         )}

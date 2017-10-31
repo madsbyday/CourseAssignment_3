@@ -30,8 +30,9 @@ class TopMenu extends Component {
             </div>
             <ul className="nav navbar-nav">
               <li><Link to="/about">About</Link></li>
-              {this.state.isUser && 
-              <li><Link to="/user">Interesting Places</Link></li> } 
+              <li><Link to="/register">Register</Link></li>
+              {this.state.isUser &&
+              <li><Link to="/user">Interesting Places</Link></li> }
               {this.state.isAdmin &&
               <li><Link to="/admin">Page for Admins</Link></li>}
             </ul>
@@ -50,7 +51,7 @@ class TopMenu extends Component {
             </ul>
           </div>
         </nav>
-        
+
       </div>
     )
   }
