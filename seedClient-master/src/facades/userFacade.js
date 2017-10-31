@@ -12,7 +12,7 @@ class UserStore {
     this._messageFromServer = "";
     let resFromFirstPromise=null;  //Pass on response the "second" promise so we can read errors from server
     const options = fetchHelper.makeOptions("GET", true);
-    fetch(URL + "api/demouser", options)
+    fetch(URL + "api/places", options)
       .then((res) => {
         resFromFirstPromise = res;
         return res.json();
@@ -29,7 +29,7 @@ class UserStore {
       })
   }
   getNumber = (cb) => {
-          this._errorMessage = "";
+    this._errorMessage = "";
     this._messageFromServer = "";
     let resFromFirstPromise=null;  //Pass on response the "second" promise so we can read errors from server
     const options = fetchHelper.makeOptions("GET", true);

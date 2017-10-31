@@ -23,8 +23,7 @@ class UserPage extends Component {
     render() {
       return (
         <div>
-          <h2>Users</h2>
-          <p>This message is fetched from the server if you are properly logged in</p>
+          <h2>Interesting Places</h2>
           
           <div className="msgFromServer">
             {this.state.data}  
