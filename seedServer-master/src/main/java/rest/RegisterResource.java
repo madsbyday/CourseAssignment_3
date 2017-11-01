@@ -5,6 +5,7 @@
  */
 package rest;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.util.logging.Level;
@@ -21,6 +22,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import security.PasswordStorage;
 
 /**
@@ -37,10 +39,10 @@ public class RegisterResource {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public void registerUser(String context) throws PasswordStorage.CannotPerformOperationException {
+    public entity.User registerUser(String context) throws PasswordStorage.CannotPerformOperationException {
         
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu_development");
-        
+        entity.User u = null;
         EntityManager em = emf.createEntityManager();
         
         JsonObject body = new JsonParser().parse(context).getAsJsonObject();
@@ -61,13 +63,15 @@ public class RegisterResource {
         try
         {
             em.getTransaction().begin();
-            entity.User u = new entity.User(username, password);
+            u = new entity.User(username, password);
             em.persist(u);
             em.getTransaction().commit();
         } finally
         {
             em.close();
         }
+        //return Response.status(200).header("Access-Control-Allow-Origin", "*").entity(new Gson().toJson(u)).build();
+        return u;
     }
 
 }

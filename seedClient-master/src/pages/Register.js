@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import auth from "../authorization/auth";
 
 class Register extends Component {
     constructor() {
@@ -7,17 +8,31 @@ class Register extends Component {
     }
 
     handleSubmit = (event) => {
-
+    event.preventDefault()
+    const user = this.state.user.username;
+    const pass = this.state.user.password;
+    auth.register(user, pass, (err) => {
+      if (err) {
+        return this.setState({ err: err.errorMessage });
+      }
+      this.setState({ err: "" });
+      this.props.history.push("/");
+    });
+ 
     }
 
     onChange = (e) => {
-
+    const propertyName = e.target.id;
+    const value = e.target.value;
+    let user = this.state.user;
+    user[propertyName] = value;
+    this.setState({user});
     }
 
     render() {
       return (
         <div className="container">
-          <form className="form-signin">
+          <form className="form-signin" onSubmit={this.handleSubmit}>
             <h2 className="form-signin-heading">Register</h2>
             <label htmlFor="inputEmail" className="sr-only">Email address</label>
             <input type="text" value={this.state.user.username} onChange={this.onChange} className="form-control" id="username" placeholder="User Name" required autoFocus />
