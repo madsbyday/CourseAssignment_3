@@ -2,7 +2,8 @@
 Course Assignment 3 (October 30 - November 5 2017)
 
 ## Sprint 1 (Wednesday 20.00 - 1. October)
-### [Link to our deployed client](http://static1.nydailynews.com/polopoly_fs/1.3598149.1509374530!/img/httpImage/image.jpg_gen/derivatives/landscape_635_424/kevin-spacey.jpg) {CHANGE URL}
+### [Link to our deployed client](https://cph-an178.dk/#/)
+**NOTE:** We could not get our application to work when we deployed it. And due to our limited time, could we not fix it. 
 
 Like is was suggested, we've used the Semester Seed both for our client and our server.
 
