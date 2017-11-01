@@ -1,16 +1,9 @@
 import React, { Component } from "react";
+import { Switch, Route, Link, NavLink } from 'react-router-dom';
 
 export default class InterestingPlaces extends Component {
   constructor() {
     super();
-    //this.state = { place: {
-    //"id": 1,
-    //"name": "The Eiffel Tower",
-    //"address": "someplace",
-    //"GPS": "somewhere",
-    //"description": "its great",
-    //"rating": 4,
-    //"imgURI": "https://i.imgur.com/jFu5zSE.jpg" } }
     this.state = { places: "temp" }
   }
 
@@ -20,11 +13,16 @@ export default class InterestingPlaces extends Component {
         return results.json();
       }).then(data => {
         let places = data.map((place) => {
+          let url = "details/" + place.id
           return (
+            
             <div key ={place.name}>
             <h1> {place.name} </h1>
+            <Link to={url}>
             <img src={place.imgURI} />
+            </Link>
             </div>
+            
           ) 
         })
         this.setState({ places: places });
@@ -32,9 +30,6 @@ export default class InterestingPlaces extends Component {
       })
       
   }
-
- 
-
 
   render() {
     return (
@@ -47,8 +42,6 @@ export default class InterestingPlaces extends Component {
 
         </div>
       </div>
-
-
     )
   }
 }

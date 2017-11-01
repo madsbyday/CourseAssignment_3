@@ -8,6 +8,7 @@ import AdminPage from "./AdminPage";
 import TopMenu from "./TopMenu";
 import Register from "./Register";
 import Places from "./Places";
+import Details from "./Details";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/admin" component={AdminPage} />
         <Route path="/register" component={Register} />
         <Route path="/places" component={Places} />
+        <Route path="/details/:id" component={Details} />
       </Switch>
     </div>
   )
