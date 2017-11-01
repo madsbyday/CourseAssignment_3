@@ -26,13 +26,12 @@ class TopMenu extends Component {
         <nav className="navbar navbar-default" >
           <div className="container-fluid">
             <div className="navbar-header">
-              <a className="navbar-brand" href="/" style={{pointerEvents: "none"}}>Semester Seed</a>
+              <a className="navbar-brand" href="/" style={{pointerEvents: "none"}}>CA3</a>
             </div>
             <ul className="nav navbar-nav">
               <li><Link to="/about">About</Link></li>
-              <li><Link to="/register">Register</Link></li>
-              {this.state.isUser &&
-              <li><Link to="/user">Interesting Places</Link></li> }
+              <li><Link to="/places">Interesting Places</Link></li>
+              {!this.state.isUser && <li><Link to="/register">Register</Link></li> }
               {this.state.isAdmin &&
               <li><Link to="/admin">Page for Admins</Link></li>}
             </ul>

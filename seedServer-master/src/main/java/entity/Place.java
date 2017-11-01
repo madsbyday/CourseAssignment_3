@@ -13,31 +13,27 @@ import javax.persistence.Id;
 
 /**
  *
- * @author vfgya_000
+ * @author Sanox
  */
 @Entity
 public class Place implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    
-    private String gpsLocation;
-    
-    private String desc;
-    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String name;
+    private String address;
+    private String GPS;
+    private String description;
     private int rating;
-    
-    private String uriImage;
-    
-    private String addressPlace;
+    private String imgURI;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

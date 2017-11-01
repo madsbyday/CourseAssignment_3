@@ -130,10 +130,11 @@ class AuthenticationHandler {
                 'Accept': 'application/json'
             })
         };
-        let resFromFirstPromise = null;  //Pass on response the "second" promise so we can read errors from server
+        //let resFromFirstPromise = null;  //Pass on response the "second" promise so we can read errors from server
         fetch(URL + "api/register", options).then(res => {
-           resFromFirstPromise = res;
-           return res.json();
+//           resFromFirstPromise = res;
+//           console.log(res.json);
+//           return res.json();
             })
                // .then(data => {
 //                    errorChecker(resFromFirstPromise, data);
