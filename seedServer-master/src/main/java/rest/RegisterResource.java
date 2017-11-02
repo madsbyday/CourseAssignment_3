@@ -49,7 +49,6 @@ public class RegisterResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public entity.User registerUser(String context) throws PasswordStorage.CannotPerformOperationException {
         
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu_development");
         entity.User u = null;
 
         EntityManager em = emf.createEntityManager();
