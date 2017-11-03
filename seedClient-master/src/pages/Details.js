@@ -5,7 +5,7 @@ import auth from '../authorization/auth'
 export default class Details extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { json: "" , rating: 5, userName: auth.userName };
+        this.state = { json: "" , rating: "", userName: auth.userName };
         this.setRating = this.setRating.bind(this)
     }
 
@@ -21,11 +21,11 @@ export default class Details extends React.Component {
             })
 
     }
-    setRating(event) {
 
+    setRating(event) {
         let rating = (event.target.value);
-        this.setState({rating: rating});
-        auth.setPlaceRating(this.state.userName, this.state.json.id, this.state.rating);
+        //this.setState({rating: rating});
+        auth.setPlaceRating(this.state.userName, this.state.json.id, rating);
         console.log("From Details: " + this.state.userName + " " + this.state.json.id + " " + this.state.rating);
     } 
 
@@ -41,26 +41,26 @@ export default class Details extends React.Component {
     </div>
     <img className="detail-img" src={this.state.json.imgURI} />
     
-    <form onChange={this.setRating}>
+    <form >
     <label>
          1
-      <input name="radio" value="1" type="radio" ref={1} />
+      <input name="radio" value="1" type="radio" onClick={this.setRating} />
     </label>
     <label>
          2
-      <input name="radio" value="2" type="radio" ref={1} />
+      <input name="radio" value="2" type="radio" onClick={this.setRating} />
     </label>
     <label>
          3
-      <input name="radio" value="3" type="radio" ref={1} />
+      <input name="radio" value="3" type="radio" onClick={this.setRating} />
     </label>
     <label>
          4
-      <input name="radio" value="4" type="radio" ref={1} />
+      <input name="radio" value="4" type="radio" onClick={this.setRating}  />
     </label>
     <label>
          5
-      <input name="radio" value="5" type="radio" ref={1} />
+      <input name="radio" value="5" type="radio" onClick={this.setRating} />
     </label>
 
   </form>

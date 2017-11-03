@@ -166,6 +166,7 @@ class AuthenticationHandler {
         fetch(URL + "api/place/rate", options).then(res => {
 
         });
+        
     return;
     }
 }

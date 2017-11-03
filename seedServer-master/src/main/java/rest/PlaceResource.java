@@ -119,29 +119,29 @@ public class PlaceResource {
     public Boolean IsUserRate(int pId, String username, int rating) {
         EntityManager em = emf.createEntityManager();
 
-        List<Rating> ratings;
+        List<Rating> ratings = null;
 
         Boolean exist = true;
 
         Rating ratingR;
 
         try {
-            ratings = em.createQuery("SELECT r FROM Rating r WHERE r.user = '" + username + "' AND r.place = " + pId).getResultList();
-        } finally {
-            em.close();
+            ratings = em.createQuery("SELECT r FROM Rating r WHERE r.user.userName ='" + username + "' AND r.place.id  = " + pId + " ").getResultList();
+            //ratings = em.createQuery()
+        } catch (Exception e) {
+
         }
         if (!(ratings.isEmpty())) {
             exist = false;
             try {
                 em.getTransaction().begin();
 
-                ratingR = em.find(Rating.class, ratings.get(1).getId());
+                ratingR = em.find(Rating.class, ratings.get(0).getId());
 
                 ratingR.setRate(rating);
 
                 em.getTransaction().commit();
-            }
-            finally {
+            } finally {
                 em.close();
             }
         }
