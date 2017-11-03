@@ -1,10 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import { Switch, Route, Link, NavLink } from 'react-router-dom';
+import auth from '../authorization/auth'
 
-export default class Details extends Component {
+export default class Details extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { json: "" };
+        this.state = { json: "" , rating: 5, userName: auth.userName };
+        this.setRating = this.setRating.bind(this)
     }
 
 
@@ -19,6 +21,13 @@ export default class Details extends Component {
             })
 
     }
+    setRating(event) {
+
+        let rating = (event.target.value);
+        this.setState({rating: rating});
+        auth.setPlaceRating(this.state.userName, this.state.json.id, this.state.rating);
+        console.log("From Details: " + this.state.userName + " " + this.state.json.id + " " + this.state.rating);
+    } 
 
   render() {
       return (
@@ -31,8 +40,33 @@ export default class Details extends Component {
     <h5><span>Rating:</span> {this.state.json.rating}/5 </h5>
     </div>
     <img className="detail-img" src={this.state.json.imgURI} />
-            </div>
-        )
+    
+    <form onChange={this.setRating}>
+    <label>
+         1
+      <input name="radio" value="1" type="radio" ref={1} />
+    </label>
+    <label>
+         2
+      <input name="radio" value="2" type="radio" ref={1} />
+    </label>
+    <label>
+         3
+      <input name="radio" value="3" type="radio" ref={1} />
+    </label>
+    <label>
+         4
+      <input name="radio" value="4" type="radio" ref={1} />
+    </label>
+    <label>
+         5
+      <input name="radio" value="5" type="radio" ref={1} />
+    </label>
+
+  </form>
+
+    
+  </div>)
     }
 
 }

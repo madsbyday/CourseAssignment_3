@@ -38,12 +38,13 @@ public class PlaceResource {
 
     @Context
     private UriInfo context;
-    
+
     private EntityManagerFactory emf;
 
     public PlaceResource() {
         emf = Persistence.createEntityManagerFactory("pu_development");
-    };
+    }
+    ;
 
     PlaceFacade pf = new PlaceFacade();
 
@@ -67,32 +68,70 @@ public class PlaceResource {
     public String getPlaceByID(@PathParam("id") int id) {
 
         Place p = pf.getPlaceByID(id);
+
         
+        return new Gson().toJson(p);
+    }
+
+    @Path("/rate")
+    @RolesAllowed("User")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+
+    public String submitRating(String context) {
+
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu_development");
         EntityManager em = emf.createEntityManager();
+        Rating r = null;
 
-        List<Integer> ratings;
-
+        JsonObject body = new JsonParser().parse(context).getAsJsonObject();
+        int placeID = 0;
+        String userName = null;
+        int rating = 0;
+        
+        if (body.has("placeID")) {
+            placeID = body.get("placeID").getAsInt();
+        }
+        if (body.has("userName")) {
+            userName = body.get("userName").getAsString();
+        }
+        if (body.has("rating")) {
+            rating = body.get("rating").getAsInt();
+        }
         try {
-            ratings = em.createQuery("SELECT r.rate FROM Rating r WHERE r.id = " + id).getResultList();
+            em.getTransaction().begin();
+            entity.User u = em.find(entity.User.class, userName);
+            Place p = em.find(Place.class, placeID);
+            p.setRating(updateRating(p.getId(), rating));
+            r = new Rating(u, p, rating);
+            em.persist(r);
+            em.getTransaction().commit();
+
         } finally {
             em.close();
         }
-        
+        return new Gson().toJson(r);
+    }
+    
+    public int updateRating(int id, int newRating) {
+        EntityManager em = emf.createEntityManager();
+        List<Integer> ratings;
+        try {
+            ratings = em.createQuery("SELECT r.rate FROM Rating r WHERE r.place.id = " + id).getResultList();
+        } finally {
+            em.close();
+        }
         int sum = 0;
-        
         for (Integer rating : ratings) {
             sum += rating;
         }
-        int average = sum / ratings.size();
-        
-        p.setRating(average);
-        
-        return new Gson().toJson(p);
+        int average = (sum + newRating) / (ratings.size() + 1);
 
+        return average;
+        
     }
     
-    
-
     @RolesAllowed("User")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
@@ -135,7 +174,7 @@ public class PlaceResource {
         } finally {
             em.close();
         }
-         return new Gson().toJson(p);
+        return new Gson().toJson(p);
     }
 
 }

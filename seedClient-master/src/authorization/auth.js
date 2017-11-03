@@ -151,12 +151,22 @@ class AuthenticationHandler {
         }
         const options = fetchHelper.makeOptions("POST", true, data)
         fetch(URL + "api/place", options).then(res => {
-            //           resFromFirstPromise = res;
-            //           console.log(res.json);
-            //           return res.json();
 
         })
         return;
+    }
+    setPlaceRating = (userName, placeID, rating) => {
+        console.log("From Auth: " + userName + " " + placeID + " " + rating);
+        var data = {
+            "placeID": placeID,
+            "userName": userName,
+            "rating": rating
+        }
+        const options = fetchHelper.makeOptions("POST", true, data)
+        fetch(URL + "api/place/rate", options).then(res => {
+
+        });
+    return;
     }
 }
     
