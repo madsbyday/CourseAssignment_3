@@ -7,6 +7,7 @@ class PlaceRegister extends Component {
         this.state = { err: "", place: { name: "", address: "", description: "", imguri: "", gps: "" } }
     }
 
+
     handleSubmit = (event) => {
         event.preventDefault()
         const name = this.state.place.name;

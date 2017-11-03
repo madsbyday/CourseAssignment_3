@@ -118,7 +118,7 @@ class AuthenticationHandler {
     }
     register = (username, password, cb) => {
         this._errorMessage = "";
-
+        
         var options = {
             method: "POST",
             body: JSON.stringify({
@@ -139,20 +139,17 @@ class AuthenticationHandler {
     placeregister = (name, address, description, image, gps, cb) => {
         this._errorMessage = "";
 
-        var options = {
-            method: "POST",
-            body: JSON.stringify({
+        var data = {
+            
                 "name": name,
                 "address": address,
                 "description": description,
                 "imguri": image,
                 "GPS": gps
-            }),
-            headers: new Headers({
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            })
+            
+            
         }
+        const options = fetchHelper.makeOptions("POST", true, data)
         fetch(URL + "api/place", options).then(res => {
             //           resFromFirstPromise = res;
             //           console.log(res.json);

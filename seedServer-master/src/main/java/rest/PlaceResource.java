@@ -12,6 +12,7 @@ import entity.Place;
 import facades.PlaceFacade;
 import java.sql.SQLException;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -69,6 +70,7 @@ public class PlaceResource {
 
     }
 
+    @RolesAllowed("User")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
