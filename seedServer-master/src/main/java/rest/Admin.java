@@ -12,19 +12,42 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import net.minidev.json.JSONArray;
+import net.minidev.json.JSONObject;
 
-@Path("demoadmin")
+@Path("admin")
 @RolesAllowed("Admin")
 public class Admin {
 
-    
+    private EntityManagerFactory emf;
+
+    public Admin() {
+        this.emf = Persistence.createEntityManagerFactory("pu_development");
+    }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getSomething() {
-        String now = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss").format(new Date());
-        return "{\"message\" : \"Hello Admin from server (call accesible by only authenticated ADMINS)\",\n" + "\"serverTime\": \"" + now + "\"}";
+    @Path("all")
+    public String getAllUsers() {
+        EntityManager em = emf.createEntityManager();
+
+        List<String> users;
+
+        try {
+            users = em.createQuery("SELECT u.userName FROM SEED_USER u").getResultList();
+        } finally {
+            em.close();
+        }
+        JSONArray jsonArray = new JSONArray();
+
+        for (int i = 0; i < users.size(); i++) {
+            JSONObject jsonObj = new JSONObject();
+            jsonObj.put("username", users.get(i));
+
+            jsonArray.add(jsonObj);
+        }
+        return jsonArray.toJSONString();
+
     }
 
-    
 }

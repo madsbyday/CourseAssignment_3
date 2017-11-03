@@ -9,6 +9,7 @@ import TopMenu from "./TopMenu";
 import Register from "./Register";
 import Places from "./Places";
 import Details from "./Details";
+import UserList from "./UserList";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/register" component={Register} />
         <Route path="/places" component={Places} />
         <Route path="/details/:id" component={Details} />
+        <Route path="/userlist" component={UserList} />
       </Switch>
     </div>
   )

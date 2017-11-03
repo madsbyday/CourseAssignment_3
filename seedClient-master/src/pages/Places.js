@@ -4,7 +4,7 @@ import { Switch, Route, Link, NavLink } from 'react-router-dom';
 export default class InterestingPlaces extends Component {
   constructor() {
     super();
-    this.state = { places: "temp" }
+    this.state = { places: "" }
   }
 
   componentDidMount() {
@@ -15,13 +15,12 @@ export default class InterestingPlaces extends Component {
         let places = data.map((place) => {
           let url = "details/" + place.id
           return (
-            
-            <div key ={place.name}>
-            <h1> {place.name} </h1>
             <Link to={url}>
-            <img src={place.imgURI} />
-            </Link>
+            <div className="place-container" key ={place.name}>
+            <h3> {place.name} </h3>
+            <img className="place-img" src={place.imgURI} />
             </div>
+            </Link>
             
           ) 
         })
@@ -34,8 +33,8 @@ export default class InterestingPlaces extends Component {
   render() {
     return (
 
-      <div className="div1">
-        <h1>Places</h1>
+      <div className="places-container">
+        <h2>Places</h2>
         <div className="places">
 
           {this.state.places}
