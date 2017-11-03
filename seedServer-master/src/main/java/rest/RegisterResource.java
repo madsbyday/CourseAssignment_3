@@ -53,21 +53,16 @@ public class RegisterResource {
         entity.User u = null;
 
         EntityManager em = emf.createEntityManager();
-
         JsonObject body = new JsonParser().parse(context).getAsJsonObject();
-
         String username = null;
-
         String password = null;
 
         if (body.has("username")) {
             username = body.get("username").getAsString();
         }
-
         if (body.has("password")) {
             password = body.get("password").getAsString();
         }
-
         try {
             em.getTransaction().begin();
 

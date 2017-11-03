@@ -18,9 +18,9 @@ const Home = observer(class Home extends Component {
           <li>Page for Users (try to login with: username= <b>user</b>, password = <b>test</b>)</li>
           <li>Page form Admins (try to login with: username= <b>admin</b>, password = <b>test</b>)</li>
         </ul>
-        <br/>
+        <br />
         <p>Log-in with the credintials given above to see "authentication in action"</p>
-    </div>
+      </div>
     )
   }
 })

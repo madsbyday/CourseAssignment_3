@@ -1,7 +1,7 @@
 import jwtDecode from "jwt-decode";
 import fetchHelper, { errorChecker } from "../facades/fetchHelpers"
 
-        const URL = require("../../package.json").serverURL;
+const URL = require("../../package.json").serverURL;
 
 class AuthenticationHandler {
 
@@ -86,7 +86,7 @@ class AuthenticationHandler {
             this._userWasLoggenIn(cb);
         }
 
-        var user = {username, password};
+        var user = { username, password };
 
         var options = {
             method: "POST",
@@ -97,23 +97,23 @@ class AuthenticationHandler {
         }
         let resFromFirstPromise = null;  //Pass on response the "second" promise so we can read errors from server
         fetch(URL + "api/login", options)
-                .then(res => {
-                    resFromFirstPromise = res;
-                    return res.json();
-                })
-                .then(data => {
-                    errorChecker(resFromFirstPromise, data);
-                    this.setToken(data.token);
-                    if (this._token != null) {
-                        this._userWasLoggenIn(cb);
-                    }
-                })
-                .catch(err => {
-                    console.log(err);
-                    if (cb) {
-                        cb({errorMessage: fetchHelper.addJustErrorMessage(err)});
-                    }
-                })
+            .then(res => {
+                resFromFirstPromise = res;
+                return res.json();
+            })
+            .then(data => {
+                errorChecker(resFromFirstPromise, data);
+                this.setToken(data.token);
+                if (this._token != null) {
+                    this._userWasLoggenIn(cb);
+                }
+            })
+            .catch(err => {
+                console.log(err);
+                if (cb) {
+                    cb({ errorMessage: fetchHelper.addJustErrorMessage(err) });
+                }
+            })
         return;
     }
     register = (username, password, cb) => {
@@ -130,41 +130,49 @@ class AuthenticationHandler {
                 'Accept': 'application/json'
             })
         };
-        //let resFromFirstPromise = null;  //Pass on response the "second" promise so we can read errors from server
+
         fetch(URL + "api/register", options).then(res => {
-//           resFromFirstPromise = res;
-//           console.log(res.json);
-//           return res.json();
-            })
-               // .then(data => {
-//                    errorChecker(resFromFirstPromise, data);
-//                    this.setToken(data.token);
-//                    if (this._token != null) {
-//                        this._userWasLoggenIn(cb);
-//                   }
-                   // console.log(data);
-                //})
-//                .catch(err => {
-//                    console.log(err);
-//                    if (cb) {
-//                        cb({errorMessage: fetchHelper.addJustErrorMessage(err)});
-//                    }
-//                })
+        })
         return;
 
     }
+    placeregister = (name, address, description, image, gps, cb) => {
+        this._errorMessage = "";
 
+        var options = {
+            method: "POST",
+            body: JSON.stringify({
+                "name": name,
+                "address": address,
+                "description": description,
+                "imguri": image,
+                "GPS": gps
+            }),
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            })
+        }
+        fetch(URL + "api/place", options).then(res => {
+            //           resFromFirstPromise = res;
+            //           console.log(res.json);
+            //           return res.json();
+
+        })
+        return;
+    }
 }
+    
+    var auth = new AuthenticationHandler();
+
+    //Call init, if a new Instance was created due to a refresh (F5 or similar)
+    auth.initDataFromToken();
+
+    //Comment out for debugging
+    //window.auth = auth;
+
+    export default auth;
 
 
-var auth = new AuthenticationHandler();
-
-//Call init, if a new Instance was created due to a refresh (F5 or similar)
-auth.initDataFromToken();
-
-//Comment out for debugging
-//window.auth = auth;
-
-export default auth;
 
 

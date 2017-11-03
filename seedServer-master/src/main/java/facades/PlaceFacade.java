@@ -30,9 +30,7 @@ public class PlaceFacade {
             em.close();
         }
         return places;
-    }
-
-    ;
+    };
 
     public Place getPlaceByID(int id) {
         EntityManager em = emf.createEntityManager();

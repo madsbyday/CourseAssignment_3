@@ -6,6 +6,7 @@
 package entity;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,12 +23,25 @@ public class Place implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(unique=true)
     private String name;
     private String address;
     private String GPS;
     private String description;
     private int rating;
     private String imgURI;
+
+    public Place() {
+    }
+
+    public Place(String name, String address, String GPS, String description, int rating, String imgURI) {
+        this.name = name;
+        this.address = address;
+        this.GPS = GPS;
+        this.description = description;
+        this.rating = rating;
+        this.imgURI = imgURI;
+    }
 
     public Integer getId() {
         return id;
@@ -60,6 +74,10 @@ public class Place implements Serializable {
     @Override
     public String toString() {
         return "entity.Place[ id=" + id + " ]";
+    }
+
+    public String getName() {
+        return name;
     }
     
 }

@@ -4,17 +4,17 @@ import auth from '../authorization/auth'
 
 class TopMenu extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state = {loggedIn: auth.loggedIn, userName:auth.userName,isUser:false,isAdmin:false}
+    this.state = { loggedIn: auth.loggedIn, userName: auth.userName, isUser: false, isAdmin: false }
   }
 
-  loginStatus = (status,userName,isUser,isAdmin) =>{
-    this.setState({loggedIn: status, userName,isUser,isAdmin});
+  loginStatus = (status, userName, isUser, isAdmin) => {
+    this.setState({ loggedIn: status, userName, isUser, isAdmin });
   }
 
-  componentDidMount(){
-     auth.setLoginObserver(this.loginStatus);
+  componentDidMount() {
+    auth.setLoginObserver(this.loginStatus);
   }
 
   render() {
@@ -26,14 +26,14 @@ class TopMenu extends Component {
         <nav className="navbar navbar-default" >
           <div className="container-fluid">
             <div className="navbar-header">
-              <a className="navbar-brand" href="/" style={{pointerEvents: "none"}}>CA3</a>
+              <a className="navbar-brand" href="/" style={{ pointerEvents: "none" }}>CA3</a>
             </div>
             <ul className="nav navbar-nav">
               <li><Link to="/about">About</Link></li>
               <li><Link to="/places">Interesting Places</Link></li>
-              {!this.state.isUser && <li><Link to="/register">Register</Link></li> }
+              {!this.state.isUser && <li><Link to="/register">Register</Link></li>}
               {this.state.isAdmin &&
-              <li><Link to="/admin">Page for Admins</Link></li>}
+                <li><Link to="/admin">Page for Admins</Link></li>}
             </ul>
             <ul className="nav navbar-nav navbar-right">
               <li className="navbar-text" style={{ color: "steelBlue" }}>{logInStatus}</li>
@@ -57,4 +57,4 @@ class TopMenu extends Component {
 }
 
 
-  export default TopMenu;
+export default TopMenu;
