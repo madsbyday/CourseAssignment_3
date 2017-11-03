@@ -69,7 +69,6 @@ public class PlaceResource {
 
         Place p = pf.getPlaceByID(id);
 
-        
         return new Gson().toJson(p);
     }
 
@@ -89,7 +88,7 @@ public class PlaceResource {
         int placeID = 0;
         String userName = null;
         int rating = 0;
-        
+
         if (body.has("placeID")) {
             placeID = body.get("placeID").getAsInt();
         }
@@ -99,21 +98,57 @@ public class PlaceResource {
         if (body.has("rating")) {
             rating = body.get("rating").getAsInt();
         }
-        try {
-            em.getTransaction().begin();
-            entity.User u = em.find(entity.User.class, userName);
-            Place p = em.find(Place.class, placeID);
-            p.setRating(updateRating(p.getId(), rating));
-            r = new Rating(u, p, rating);
-            em.persist(r);
-            em.getTransaction().commit();
+        boolean allow = IsUserRate(placeID, userName, rating);
+        if (allow == true) {
+            try {
+                em.getTransaction().begin();
+                entity.User u = em.find(entity.User.class, userName);
+                Place p = em.find(Place.class, placeID);
+                p.setRating(updateRating(p.getId(), rating));
+                r = new Rating(u, p, rating);
+                em.persist(r);
+                em.getTransaction().commit();
 
-        } finally {
-            em.close();
+            } finally {
+                em.close();
+            }
         }
         return new Gson().toJson(r);
     }
-    
+
+    public Boolean IsUserRate(int pId, String username, int rating) {
+        EntityManager em = emf.createEntityManager();
+
+        List<Rating> ratings;
+
+        Boolean exist = true;
+
+        Rating ratingR;
+
+        try {
+            ratings = em.createQuery("SELECT r FROM Rating r WHERE r.user = '" + username + "' AND r.place = " + pId).getResultList();
+        } finally {
+            em.close();
+        }
+        if (!(ratings.isEmpty())) {
+            exist = false;
+            try {
+                em.getTransaction().begin();
+
+                ratingR = em.find(Rating.class, ratings.get(1).getId());
+
+                ratingR.setRate(rating);
+
+                em.getTransaction().commit();
+            }
+            finally {
+                em.close();
+            }
+        }
+        return exist;
+
+    }
+
     public int updateRating(int id, int newRating) {
         EntityManager em = emf.createEntityManager();
         List<Integer> ratings;
@@ -129,9 +164,9 @@ public class PlaceResource {
         int average = (sum + newRating) / (ratings.size() + 1);
 
         return average;
-        
+
     }
-    
+
     @RolesAllowed("User")
     @POST
     @Produces(MediaType.APPLICATION_JSON)

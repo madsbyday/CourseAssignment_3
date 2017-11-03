@@ -33,6 +33,24 @@ public class Rating implements Serializable {
 
     private int rate;
 
+    public User getUser() {
+        return user;
+    }
+
+    public Place getPlace() {
+        return place;
+    }
+
+    public int getRate() {
+        return rate;
+    }
+
+    public void setRate(int rate) {
+        this.rate = rate;
+    }
+    
+    
+
     public Rating() {
     }
 
