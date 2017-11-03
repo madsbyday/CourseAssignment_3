@@ -6,57 +6,45 @@
 package entity;
 
 import java.io.Serializable;
-import javax.persistence.Column;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
- * @author Sanox
+ * @author vfgya_000
  */
 @Entity
-public class Place implements Serializable {
+public class Rating implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    @Column(unique=true)
-    private String name;
-    private String address;
-    private String GPS;
-    private String description;
-    private int rating;
-    private String imgURI;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    
+    @ManyToOne
+    private User user;
+    
+    @ManyToOne
+    private Place place;
+    
+    private int rate;
 
-    public Place() {
-    }
-
-    public Place(String name, String address, String GPS, String description, int rating, String imgURI) {
-        this.name = name;
-        this.address = address;
-        this.GPS = GPS;
-        this.description = description;
-        this.rating = rating;
-        this.imgURI = imgURI;
-    }
-
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
+    
+    
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
-
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
     
     
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -67,10 +55,10 @@ public class Place implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Place)) {
+        if (!(object instanceof Rating)) {
             return false;
         }
-        Place other = (Place) object;
+        Rating other = (Rating) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -79,11 +67,7 @@ public class Place implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Place[ id=" + id + " ]";
-    }
-
-    public String getName() {
-        return name;
+        return "entity.Rating[ id=" + id + " ]";
     }
     
 }

@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import entity.Place;
+import entity.Rating;
 import facades.PlaceFacade;
 import java.sql.SQLException;
 import java.util.List;
@@ -37,13 +38,13 @@ public class PlaceResource {
 
     @Context
     private UriInfo context;
+    
+    private EntityManagerFactory emf;
 
-    /**
-     * Creates a new instance of PlaceResource
-     */
     public PlaceResource() {
+        emf = Persistence.createEntityManagerFactory("pu_development");
+    };
 
-    }
     PlaceFacade pf = new PlaceFacade();
 
     /**
@@ -66,9 +67,31 @@ public class PlaceResource {
     public String getPlaceByID(@PathParam("id") int id) {
 
         Place p = pf.getPlaceByID(id);
+        
+        EntityManager em = emf.createEntityManager();
+
+        List<Integer> ratings;
+
+        try {
+            ratings = em.createQuery("SELECT r.rate FROM Rating r WHERE r.id = " + id).getResultList();
+        } finally {
+            em.close();
+        }
+        
+        int sum = 0;
+        
+        for (Integer rating : ratings) {
+            sum += rating;
+        }
+        int average = sum / ratings.size();
+        
+        p.setRating(average);
+        
         return new Gson().toJson(p);
 
     }
+    
+    
 
     @RolesAllowed("User")
     @POST
