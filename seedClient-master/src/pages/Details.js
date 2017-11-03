@@ -20,20 +20,17 @@ export default class Details extends Component {
 
     }
 
-
-
-    render() {
-        return (
-            <div>
-                <h1> {this.state.json.name} </h1>
-                <h1> {this.state.json.id} </h1>
-                <img src={this.state.json.imgURI} />
-                <h1> {this.state.json.address} </h1>
-                <h1> {this.state.json.GPS} </h1>
-                <h1> {this.state.json.description} </h1>
-                <h1> {this.state.json.rating} </h1>
-
-
+  render() {
+      return (
+    <div>
+    <div className="detail-container">
+    <h5><span>Name:</span> {this.state.json.name} </h5>
+    <h5><span>Address:</span> {this.state.json.address} </h5>
+    <h5><span>GPS-Location:</span> {this.state.json.GPS} </h5>
+    <h5><span>Description:</span> {this.state.json.description} </h5>
+    <h5><span>Rating:</span> {this.state.json.rating}/5 </h5>
+    </div>
+    <img className="detail-img" src={this.state.json.imgURI} />
             </div>
         )
     }

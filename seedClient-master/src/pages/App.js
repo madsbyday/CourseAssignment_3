@@ -9,7 +9,11 @@ import TopMenu from "./TopMenu";
 import Register from "./Register";
 import Places from "./Places";
 import Details from "./Details";
+<<<<<<< HEAD
 import PlaceRegister from "./PlaceRegister";
+=======
+import UserList from "./UserList";
+>>>>>>> ad13112001466cf0e36e3283abaa12d1d2ba421c
 
 
 function App() {
@@ -25,7 +29,11 @@ function App() {
         <Route path="/register" component={Register} />
         <Route path="/places" component={Places} />
         <Route path="/details/:id" component={Details} />
+<<<<<<< HEAD
         <Route path="/placeregister" component={PlaceRegister} />
+=======
+        <Route path="/userlist" component={UserList} />
+>>>>>>> ad13112001466cf0e36e3283abaa12d1d2ba421c
       </Switch>
     </div>
   )
