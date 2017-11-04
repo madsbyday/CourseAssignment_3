@@ -104,6 +104,9 @@ public class PlaceResource {
                 em.getTransaction().begin();
                 entity.User u = em.find(entity.User.class, userName);
                 Place p = em.find(Place.class, placeID);
+                
+                // update place rating method here
+                
                 p.setRating(updateRating(p.getId(), rating));
                 r = new Rating(u, p, rating);
                 em.persist(r);

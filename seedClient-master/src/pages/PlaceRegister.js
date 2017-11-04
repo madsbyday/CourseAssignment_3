@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import auth from "../authorization/auth";
+import Login from "./Login";
 
 class PlaceRegister extends Component {
     constructor() {
         super();
-        this.state = { err: "", place: { name: "", address: "", description: "", imguri: "", gps: "" } }
+        this.state = { err: "", place: { name: "", address: "", description: "", imguri: "", gps: "" }, msg: "", hidden: "false" }
     }
 
 
@@ -23,7 +24,9 @@ class PlaceRegister extends Component {
             this.setState({ err: "" });
             this.props.history.push("/");
         });
-
+    }
+    onbtclick = (e) => {
+        this.setState({ msg: this.state.place.name + " is now registered", hidden: "false"});
     }
 
     onChange = (e) => {
@@ -50,8 +53,9 @@ class PlaceRegister extends Component {
                     <label htmlFor="inputGPS" className="sr-only">GPS Location</label>
                     <input type="text" value={this.state.place.gps} onChange={this.onChange} id="gps" className="form-control" placeholder="GPS Coordinates (WIP)" required />
                     <br />
-                    <button className="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+                    <button onClick={this.onbtclick} className="btn btn-lg btn-primary btn-block" type="submit">Register</button>
                     <br />
+                    <p>  {this.state.msg}</p>
                 </form>
             </div>
         )

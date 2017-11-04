@@ -5,7 +5,7 @@ import auth from '../authorization/auth'
 export default class Details extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { json: "" , rating: "", userName: auth.userName };
+        this.state = { json: "" , rating: "", userName: auth.userName, rmsg: "" };
         this.setRating = this.setRating.bind(this)
     }
 
@@ -27,7 +27,8 @@ export default class Details extends React.Component {
         //this.setState({rating: rating});
         auth.setPlaceRating(this.state.userName, this.state.json.id, rating);
         console.log("From Details: " + this.state.userName + " " + this.state.json.id + " " + this.state.rating);
-    } 
+        this.setState({rmsg: "you rated this place " + rating + " out of 5!" });
+    }
 
   render() {
       return (
@@ -38,10 +39,8 @@ export default class Details extends React.Component {
     <h5><span>GPS-Location:</span> {this.state.json.GPS} </h5>
     <h5><span>Description:</span> {this.state.json.description} </h5>
     <h5><span>Rating:</span> {this.state.json.rating}/5 </h5>
-    </div>
-    <img className="detail-img" src={this.state.json.imgURI} />
-    
     <form >
+    <h5><span>Rate the place:</span></h5>
     <label>
          1
       <input name="radio" value="1" type="radio" onClick={this.setRating} />
@@ -62,10 +61,14 @@ export default class Details extends React.Component {
          5
       <input name="radio" value="5" type="radio" onClick={this.setRating} />
     </label>
-
+    <p>{this.state.rmsg}</p>
   </form>
+    </div>
+    <img className="detail-img" src={this.state.json.imgURI} />
 
-    
+
+
+
   </div>)
     }
 
