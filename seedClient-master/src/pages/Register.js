@@ -4,7 +4,7 @@ import auth from "../authorization/auth";
 class Register extends Component {
     constructor() {
       super();
-      this.state = { err: "", user: {username:"", password:""} }
+      this.state = { err: "", user: {username:"", password:""}, umsg: "" }
     }
 
     handleSubmit = (event) => {
@@ -18,7 +18,7 @@ class Register extends Component {
       this.setState({ err: "" });
       this.props.history.push("/");
     });
- 
+
     }
 
     onChange = (e) => {
@@ -27,6 +27,10 @@ class Register extends Component {
     let user = this.state.user;
     user[propertyName] = value;
     this.setState({user});
+    }
+
+    onbClick = (e) => {
+      this.setState({umsg: "You registered!"})
     }
 
     render() {
@@ -38,8 +42,9 @@ class Register extends Component {
             <input type="text" value={this.state.user.username} onChange={this.onChange} className="form-control" id="username" placeholder="User Name" required autoFocus />
             <label htmlFor="inputPassword" className="sr-only">Password</label>
             <input type="password" value={this.state.user.password} onChange={this.onChange} id="password" className="form-control" placeholder="Password" required />
-            <button className="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+            <button onClick={this.onbClick} className="btn btn-lg btn-primary btn-block" type="submit">Register</button>
             <br />
+            <p onClick={this.onbClick}>{this.state.umsg}</p>
           </form>
       </div>
       )

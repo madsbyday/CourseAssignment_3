@@ -5,7 +5,7 @@ import auth from '../authorization/auth'
 export default class Details extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { json: "" , rating: "", userName: auth.userName, rmsg: "" };
+        this.state = { json: "" , rating: "", userName: auth.userName, rmsg: "", isuser: auth.isUser};
         this.setRating = this.setRating.bind(this)
     }
 
@@ -39,6 +39,7 @@ export default class Details extends React.Component {
     <h5><span>GPS-Location:</span> {this.state.json.GPS} </h5>
     <h5><span>Description:</span> {this.state.json.description} </h5>
     <h5><span>Rating:</span> {this.state.json.rating}/5 </h5>
+    {this.state.isuser &&
     <form >
     <h5><span>Rate the place:</span></h5>
     <label>
@@ -63,6 +64,7 @@ export default class Details extends React.Component {
     </label>
     <p>{this.state.rmsg}</p>
   </form>
+}
     </div>
     <img className="detail-img" src={this.state.json.imgURI} />
 
