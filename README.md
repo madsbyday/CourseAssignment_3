@@ -3,6 +3,7 @@ Course Assignment 3 (October 30 - November 5 2017)
 
 ## Sprint 2 (Saturday 20.00)
 ### [Link to our deployed client](https://ca3.cph-an178.dk/#/)
+###  [Link to our deployed APP] ( https://expo.io/@jonsabban/ca3-app )
 
 **How to use the system**
 
@@ -26,7 +27,9 @@ Here is all the features we could achieve.
 - Post a user
 - Post a rating
 
-**App**: All users can see existing places and their ratings.
+**App**:
+Currently it is possible too see the uploaded places that has been added via the website.
+The 2 other tabs, Add Place and Details are not working at the time.
 
 ### Who did what:
 
