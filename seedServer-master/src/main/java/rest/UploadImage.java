@@ -38,7 +38,7 @@ public class UploadImage {
     }
 
     //IMPORTANT: Replace with a unix path when uploading to Droplet and set permissions on the folder
-    public static final String FILE_LOCATION = "C:/Users/alexa/Pictures/"; // "~/img/" + DSC_0349.jpg
+    public static final String FILE_LOCATION = "/home/ca3/img"; // "~/img/" + DSC_0349.jpg
     
     @Path("/file")
     @POST

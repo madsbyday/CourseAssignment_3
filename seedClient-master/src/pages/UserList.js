@@ -9,7 +9,7 @@ export default class InterestingPlaces extends Component {
 
   componentDidMount() {
     const options = fetchHelper.makeOptions("GET", true)
-    fetch('http://localhost:8084/seedMaven/api/admin/all', options)
+    fetch('https://ca3.cph-an178.dk/backend/seedMaven/api/admin/all', options)
       .then(results => {
         return results.json();
       }).then(data => {

@@ -11,7 +11,7 @@ export default class Details extends React.Component {
 
 
     componentDidMount() {
-        fetch('http://localhost:8084/seedMaven/api/place/single/' + this.props.match.params.id)
+        fetch('https://ca3.cph-an178.dk/backend/seedMaven/api/place/single/' + this.props.match.params.id)
             .then(results => {
                 return results.json();
             }).then(data => {

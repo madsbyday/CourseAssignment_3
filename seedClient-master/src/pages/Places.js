@@ -8,7 +8,7 @@ export default class InterestingPlaces extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:8084/seedMaven/api/place/all')
+    fetch('https://ca3.cph-an178.dk/backend/seedMaven/api/place/all')
       .then(results => {
         return results.json();
       }).then(data => {
