@@ -35,31 +35,31 @@ When you arrive at the client site you will see the home page, there you will se
 |Details.js       |         |     |    |
 |Login.js         |         |     |    |
 |Logout.js        |         |     |    |
-|PlaceRegister.js |         |     |  X |
-|Places.js        |         |     |  X |
-|Register.js      |         |     |  X |
+|PlaceRegister.js |         |  X  |  X |
+|Places.js        |         |  X  |  X |
+|Register.js      |         |  X  |  X |
 |TopMenu.js       |         |     |    |
 |UserList.js      |         |     |  x |
 
 
 |Backend                  |Alexander|Jonas|Mads|
 |-------------------------|:-------:|:---:|:--:|
-|Place.java               |         |     |  X |
-|Rating.java              |         |     |  X |
+|Place.java               |         |  X  |  X |
+|Rating.java              |         |  X  |  X |
 |Role.java                |         |     |    |
 |User.java                |         |     |    |
-|PlaceFacade.java         |         |     |    |
+|PlaceFacade.java         |         |  X  |    |
 |UserFacade.java          |         |     |    |
 |Admin.java               |         |     |  X |
 |All.java                 |         |     |    |
 |ApplicationConfig.java   |    X    |     |    |
-|PlaceResource.java       |         |     |  X |
-|RegisterResourse.java    |         |     |  X |
+|PlaceResource.java       |         |  X  |  X |
+|RegisterResourse.java    |         |  X  |  X |
 |UploadResource.java      |    X    |     |    |
 
 |App                |Alexander|Jonas|Mads|
 |-------------------|:-------:|:---:|:--:|
-|MainTabNavigator.js|    X    |     |    |
+|MainTabNavigator.js|    X    |  X  |    |
 |AddPlace.js        |    X    |     |    |
 |HomeScreen.js      |         |  X  |    |
 |Login.js           |         |     |    |
