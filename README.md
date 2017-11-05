@@ -20,34 +20,34 @@ When you arrive at the client site you will see the home page, there you will se
 
 |Frontend         |Alexander|Jonas|Mads|
 |-----------------|:-------:|:---:|:--:|
-|About.js         |         |     |    |
-|App.js           |         |     |    |
-|Details.js       |         |     |    |
-|Home .js         |         |     |    |
-|Login.js         |         |     |    |
-|Logout.js        |         |     |    |
-|PlaceRegister.js |         |     |    |
-|Places.js        |         |     |    |
-|Register.js      |         |     |    |
-|TopMenu.js       |         |     |    |
-|UserList.js      |         |     |    |
+|About.js         |         |     |     |
+|App.js           |         |     |     |
+|Details.js       |         |     |     |
+|Home .js         |         |     |     |
+|Login.js         |         |     |     |
+|Logout.js        |         |     |     |
+|PlaceRegister.js |         |     |  x  |
+|Places.js        |         |     |  x  |
+|Register.js      |         |     |  x  |
+|TopMenu.js       |         |     |     |
+|UserList.js      |         |     |  x  |
 
 
 |Backend                  |Alexander|Jonas|Mads|
 |-------------------------|:-------:|:---:|:--:|
-|Place.java               |         |     |    |
-|Rating.java              |         |     |    |
-|Role.java                |         |     |    |
-|User.java                |         |     |    |
-|PlaceFacade.java         |         |     |    |
-|UserFacade.java          |         |     |    |
-|Admin.java               |         |     |    |
-|All.java                 |         |     |    |
-|ApplicationConfig.java   |    X    |     |    |
-|PlaceResource.java       |         |     |    |
-|RandomnumberResource.java|         |     |    |
-|RegisterResourse.java    |         |     |    |
-|UploadResource.java      |    X    |     |    |
+|Place.java               |         |     |  x  |
+|Rating.java              |         |     |  x  |
+|Role.java                |         |     |     |
+|User.java                |         |     |     |
+|PlaceFacade.java         |         |     |     |
+|UserFacade.java          |         |     |     |
+|Admin.java               |         |     |  x  |
+|All.java                 |         |     |     |
+|ApplicationConfig.java   |    X    |     |     |
+|PlaceResource.java       |         |     |  x  |
+|RandomnumberResource.java|         |     |     |
+|RegisterResourse.java    |         |     |  x  |
+|UploadResource.java      |    X    |     |     |
 
 |App                |Alexander|Jonas|Mads|
 |-------------------|:-------:|:---:|:--:|
