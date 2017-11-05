@@ -18,6 +18,12 @@ When you arrive at the client site you will see the home page, there you will se
 - Registered users can rate existing locations
 
 **Backend**:
+- Get all users
+- Get all places
+- Get a place by id
+- Post a place
+- Post a user
+- Post a rating
 
 **App**: All users can see existing places and their ratings.
 
