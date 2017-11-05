@@ -11,43 +11,45 @@ When you arrive at the client site you will see the home page, there you will se
 ### Features: 
 
 **Frontend**: 
+- All users can see existing places and their ratings.
+- New users can register
+- Registered users can add new places (image, address, description, rating)
+- Admins can see all users
+- Registered users can rate existing locations
 
 **Backend**:
 
-**App**:
+**App**: All users can see existing places and their ratings.
 
 ### Who did what:
 
 |Frontend         |Alexander|Jonas|Mads|
 |-----------------|:-------:|:---:|:--:|
-|About.js         |         |     |     |
-|App.js           |         |     |     |
-|Details.js       |         |     |     |
-|Home .js         |         |     |     |
-|Login.js         |         |     |     |
-|Logout.js        |         |     |     |
-|PlaceRegister.js |         |     |  x  |
-|Places.js        |         |     |  x  |
-|Register.js      |         |     |  x  |
-|TopMenu.js       |         |     |     |
-|UserList.js      |         |     |  x  |
+|App.js           |         |     |    |
+|Details.js       |         |     |    |
+|Login.js         |         |     |    |
+|Logout.js        |         |     |    |
+|PlaceRegister.js |         |     |  X |
+|Places.js        |         |     |  X |
+|Register.js      |         |     |  X |
+|TopMenu.js       |         |     |    |
+|UserList.js      |         |     |  x |
 
 
 |Backend                  |Alexander|Jonas|Mads|
 |-------------------------|:-------:|:---:|:--:|
-|Place.java               |         |     |  x  |
-|Rating.java              |         |     |  x  |
-|Role.java                |         |     |     |
-|User.java                |         |     |     |
-|PlaceFacade.java         |         |     |     |
-|UserFacade.java          |         |     |     |
-|Admin.java               |         |     |  x  |
-|All.java                 |         |     |     |
-|ApplicationConfig.java   |    X    |     |     |
-|PlaceResource.java       |         |     |  x  |
-|RandomnumberResource.java|         |     |     |
-|RegisterResourse.java    |         |     |  x  |
-|UploadResource.java      |    X    |     |     |
+|Place.java               |         |     |  X |
+|Rating.java              |         |     |  X |
+|Role.java                |         |     |    |
+|User.java                |         |     |    |
+|PlaceFacade.java         |         |     |    |
+|UserFacade.java          |         |     |    |
+|Admin.java               |         |     |  X |
+|All.java                 |         |     |    |
+|ApplicationConfig.java   |    X    |     |    |
+|PlaceResource.java       |         |     |  X |
+|RegisterResourse.java    |         |     |  X |
+|UploadResource.java      |    X    |     |    |
 
 |App                |Alexander|Jonas|Mads|
 |-------------------|:-------:|:---:|:--:|
