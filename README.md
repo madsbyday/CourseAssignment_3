@@ -8,7 +8,8 @@ Course Assignment 3 (October 30 - November 5 2017)
 
 When you arrive at the client site you will see the home page, there you will see at the top of the page a menu where you can either go to the Interesting Places page, the Register page or you the login page. If you havent allready registered, a good first choice would be to register on the Register page. After you have registered you can login with your username and password on the login page. When you've logged in you can either rate a place or register a new place on the interesting places page. Provided you have admin priviliges you can view a list of the users in the menu.   
 
-### Features: 
+### Features:
+Here is all the features we could achieve.
 
 **Frontend**: 
 - All users can see existing places and their ratings.
@@ -31,14 +32,9 @@ When you arrive at the client site you will see the home page, there you will se
 
 |Frontend         |Alexander|Jonas|Mads|
 |-----------------|:-------:|:---:|:--:|
-|App.js           |         |     |    |
-|Details.js       |         |     |    |
-|Login.js         |         |     |    |
-|Logout.js        |         |     |    |
 |PlaceRegister.js |         |  X  |  X |
 |Places.js        |         |  X  |  X |
 |Register.js      |         |  X  |  X |
-|TopMenu.js       |         |     |    |
 |UserList.js      |         |     |  x |
 
 
@@ -46,12 +42,8 @@ When you arrive at the client site you will see the home page, there you will se
 |-------------------------|:-------:|:---:|:--:|
 |Place.java               |         |  X  |  X |
 |Rating.java              |         |  X  |  X |
-|Role.java                |         |     |    |
-|User.java                |         |     |    |
 |PlaceFacade.java         |         |  X  |    |
-|UserFacade.java          |         |     |    |
 |Admin.java               |         |     |  X |
-|All.java                 |         |     |    |
 |ApplicationConfig.java   |    X    |     |    |
 |PlaceResource.java       |         |  X  |  X |
 |RegisterResourse.java    |         |  X  |  X |
