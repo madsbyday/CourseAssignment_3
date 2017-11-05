@@ -6,20 +6,24 @@ import { TabNavigator, TabBarBottom } from 'react-navigation';
 import Colors from '../constants/Colors';
 
 import HomeScreen from '../screens/HomeScreen';
-import AddPlace from '../screens/AddPlace';
-import Login from '../screens/Login';
-
+import LinksScreen from '../screens/LinksScreen';
+import SettingsScreen from '../screens/SettingsScreen';
+import AddPlaceScreen from '../screens/AddPlace';
+import PlacesScreen from '../screens/Places';
+import Details from '../screens/Details';
 export default TabNavigator(
   {
     Home: {
-      screen: HomeScreen,
+      screen: PlacesScreen,
     },
     AddPlace: {
-      screen: AddPlace,
+      screen: AddPlaceScreen,
     },
-    Login: {
-      screen: Login,
+    Details: {
+      screen: Details,
+      id: "",
     },
+    
   },
   {
     navigationOptions: ({ navigation }) => ({
@@ -30,15 +34,16 @@ export default TabNavigator(
           case 'Home':
             iconName =
               Platform.OS === 'ios'
-                ? `ios-home${focused ? '' : '-outline'}`
-                : 'md-home';
+                ? `ios-information-circle${focused ? '' : '-outline'}`
+                : 'md-information-circle';
             break;
-          case 'AddPlace':
-            iconName = Platform.OS === 'ios' ? `ios-add-circle${focused ? '' : '-outline'}` : 'md-add-circle';
+          case 'Links':
+            iconName = Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link';
             break;
-          case 'Login':
+          case 'Settings':
             iconName =
-              Platform.OS === 'ios' ? `ios-log-in${focused ? '' : '-outline'}` : 'md-log-in';
+              Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options';
+              break;
         }
         return (
           <Ionicons
