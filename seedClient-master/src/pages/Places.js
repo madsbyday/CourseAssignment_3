@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Switch, Route, Link, NavLink } from 'react-router-dom';
+import auth from '../authorization/auth'
 
 export default class InterestingPlaces extends Component {
   constructor() {
     super();
-    this.state = { places: "" }
+    this.state = { places: "" , isuser: auth.isUser}
   }
 
   componentDidMount() {
@@ -22,8 +23,8 @@ export default class InterestingPlaces extends Component {
             <img className="place-img" src={place.imgURI} />
             </div>
             </Link>
-            
-          ) 
+
+          )
         })
         this.setState({ places: places });
         console.log("state", this.state.places);
@@ -38,7 +39,8 @@ export default class InterestingPlaces extends Component {
         <h2>Places</h2>
         <div className="places">
           <Link to="placeregister">
-            <button className="btn btn-lg btn-primary btn-block" type="submit">Register a new place!</button>
+          {this.state.isuser &&
+            <button className="btn btn-lg btn-primary btn-block" type="submit">Register a new place!</button>}
           </Link>
           {this.state.places}
 

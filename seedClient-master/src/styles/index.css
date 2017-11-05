@@ -4,19 +4,19 @@
       margin: 0;
       /*font-family: Helvetica, Arial, sans-serif;*/
     }
-       
+
     ul.header li {
       display: inline;
       list-style-type: none;
       margin: 0;
     }
-    
+
     ul.header {
       /*background-color: #0000A0;*/
       background-color: lightgray;
       padding: 0;
     }
-    
+
     ul.header li a {
       color: #FFF;
       /*font-weight: bold;*/
@@ -24,26 +24,26 @@
       padding: 10px;
       display: inline-block;
     }
-    
+
     .content {
       background-color: #EEEEEE;
       padding: 20px;
     }
-    
+
     .content h2 {
       padding: 0;
       margin: 0;
     }
-    
+
     .content li {
       margin-bottom: 10px;
     }
-    
+
     .active {
       background-color: lightsteelblue;
       color: darkred;
     }
-  
+
     .place-container {
         width: 285px;
         float: left;
@@ -80,13 +80,19 @@
     h5 > span {
         font-weight: bold;
     }
+    .detail-container > form > label {
+    }
+    .detail-container > form > label > input {
+      margin-right: 20px;
+      margin-left: 7px;
+    }
  .msgFromServer {
    width: 700px;
    height : 150px;
    padding: 20px;
    color: darkgreen;
    font-size: 2em;
-   background-color: lightgray; 
+   background-color: lightgray;
   }
 
   .errmsg {
